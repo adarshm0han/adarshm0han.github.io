@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Mohan | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Adarsh&nbsp;Mohan</a>
+            <div class="menu">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero">
+        <div class="overlay"></div>
+        <div class="hero-content reveal">
+            <h1>Hi, I'm <span>Adarsh Mohan</span></h1>
+            <p>Data &amp; AI/ML Engineer</p>
+            <a href="#projects" class="cta">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container reveal">
+            <h2>About Me</h2>
+            <p>I am a graduate student at Arizona&nbsp;State&nbsp;University pursuing a Master’s in Computer Science (class of&nbsp;2026). My passion lies at the intersection of data engineering and artificial intelligence. Over the years I’ve built scalable data pipelines, explored graph databases, and engineered machine learning models that solve real‑world problems. Previously, I worked as a Senior Associate at Genpact where I ensured robust ETL workflows and redesigned dashboards for SOX compliance. I also built ML‑powered physiotherapy assistance models during my internship at CasaMed.</p>
+            <p>My technical toolkit spans Python, C++, SQL, Docker, Kubernetes and a suite of ML libraries such as PyTorch, TensorFlow and scikit‑learn. When I’m not coding you’ll find me exploring the cosmos through astrophotography or tinkering with the latest machine learning research.</p>
+            <div class="skills">
+                <div><strong>Languages:</strong> Python, C++, C, SQL, HTML, CSS</div>
+                <div><strong>Frameworks:</strong> Pandas, Numpy, TensorFlow, PyTorch, Scikit‑learn, SpaCy, Keras</div>
+                <div><strong>Tools:</strong> Docker, Kubernetes, Neo4j, Tableau, Talend, Git, Spark, Hadoop</div>
+		<div><strong>Certifications:</strong> Machine Learning [Stanford University (Coursera)], Data Science Foundation using R [Johns Hopkins University (Coursera)]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="reveal">Selected Projects</h2>
+            <!-- NYC Taxi Graph Analytics Pipeline -->
+            <div class="project reveal">
+                <div class="project-text">
+    <h3>NYC Taxi Graph Analytics Pipeline</h3>
+    <p>Designed and deployed a <strong>scalable real-time graph analytics pipeline</strong> to process and analyze NYC Yellow Cab trip data.</p>
+    <ul>
+        <li><strong>Phase 1</strong>: Built a Neo4j graph database in Docker, modeled trip data as <code>Location</code> nodes and <code>TRIP</code> relationships, and implemented <strong>PageRank</strong> and <strong>BFS</strong> using the GDS library.</li>
+        <li><strong>Phase 2</strong>: Scaled to a distributed, streaming architecture using <strong>Kubernetes</strong>, <strong>Apache Kafka</strong>, and <strong>Kafka Connect</strong> to ingest and update trip data in near real-time.</li>
+        <li>Enabled continuous computation of graph metrics (PageRank, BFS) on an ever-evolving dataset.</li>
+        <li><strong>Performance</strong>: Optimized the pipeline to utilize ~70% CPU and ~65% RAM, leaving headroom for further scaling.</li>
+    </ul>
+    <p><strong>Tech</strong>: Neo4j, Docker, Kubernetes, Apache Kafka, Kafka Connect, Python, Graph Data Science Library.</p>
+</div>
+
+                <div class="project-image">
+                    <img src="assets/nyc_pipeline.png" alt="NYC Taxi Graph Analytics Pipeline diagram">
+                </div>
+            </div>
+            <!-- Epileptic Seizure Detector -->
+            <div class="project reveal">
+                <div class="project-text">
+                    <h3>Epileptic Seizure Detector</h3>
+                    <p>Developed an EEG‑based classifier to distinguish between normal brain activity and epileptic seizures. After extensive feature engineering and visualization, a combination of Random&nbsp;Forest and K‑Nearest Neighbor models achieved <strong>99.2% accuracy</strong> and a recall of <strong>0.9954</strong>. I authored a scientific paper on this work drafted for publication.</p>
+                    <ul>
+                        <li>Processed multichannel EEG recordings and generated spectrograms for visual analysis</li>
+                        <li>Engineered statistical and frequency‑domain features to capture seizure patterns</li>
+                        <li>Built and evaluated multiple classifiers; selected RF + KNN ensemble for best performance</li>
+                    </ul>
+                </div>
+                <div class="project-image gallery">
+                    <img src="assets/eeg_normal.png" alt="EEG of non‑seizure patients">
+                    <img src="assets/eeg_seizure.png" alt="EEG of seizure patients">
+                </div>
+            </div>
+            <!-- AQI Prediction Using Weather Data -->
+            <div class="project reveal">
+                <div class="project-text">
+                    <h3>Air Quality Index (AQI) Prediction</h3>
+                    <p>Forecasted daily air quality for Los&nbsp;Angeles by combining historical AQI readings with weather data (temperature, humidity, wind speed, pressure and cloud cover). The project compared a suite of regressors and introduced feature engineering techniques such as cyclical time encoding and interaction terms. A two‑layer stacking ensemble of linear and tree‑based models reduced mean absolute error to <strong>5.24</strong> and achieved an <strong>R² of&nbsp;0.71</strong> on unseen data.</p>
+                    <ul>
+                        <li>Collected data via AirNow and Open‑Meteo APIs and merged into a clean training set</li>
+                        <li>Benchmarked models including Linear, Ridge, LGBM, XGBoost and Random Forest</li>
+                        <li>Implemented a stacking ensemble that outperformed individual models</li>
+                    </ul>
+                </div>
+                <div class="project-image gallery">
+                    <img src="assets/aqi_lgbm.png" alt="LGBM vs Actual AQI">
+                    <img src="assets/aqi_ridge.png" alt="Ridge Regression vs Actual AQI">
+                    <img src="assets/aqi_xgboost.png" alt="XGBoost vs Actual AQI">
+                </div>
+            </div>
+
+            <!-- Movie Recommender System -->
+            <div class="project reveal">
+                <div class="project-text">
+                    <h3>Movie Recommender System</h3>
+                    <p>Built a content‑based movie recommendation engine that suggests five similar movies based on a user’s selection. Using natural language processing to transform movie synopses into numerical feature vectors and a nearest‑neighbor model to compute similarities, the app returns titles that share themes, genres and plot elements with the chosen film. The entire application is wrapped in a sleek Streamlit interface and deployed to Heroku for easy access.</p>
+                    <ul>
+                        <li>Parsed and vectorized movie descriptions using TF‑IDF and cosine similarity</li>
+                        <li>Implemented a fast k‑nearest neighbours search to retrieve similar movies</li>
+                        <li>Developed an interactive web UI in Streamlit and hosted on Heroku</li>
+                    </ul>
+                </div>
+                <div class="project-image gallery">
+                    <img src="assets/movie_recommender1.png" alt="Movie recommender showing Batman recommendations">
+                    <img src="assets/movie_recommender2.png" alt="Movie recommender showing Interstellar recommendations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container reveal">
+            <h2>Get In Touch</h2>
+            <p>I'd love to discuss opportunities in data engineering and machine learning. Feel free to reach out via email or connect with me on LinkedIn and GitHub.</p>
+            <div class="contact-links">
+		<a href="mailto:adarsh.2800@gmail.com" class="contact-item">adarsh.2800@gmail.com</a>
+                <a href="mailto:amohan78@asu.edu" class="contact-item">amohan78@asu.edu</a>
+                <a href="https://www.linkedin.com/in/adarshm0han" target="_blank" rel="noopener" class="contact-item">LinkedIn</a>
+                <a href="https://github.com/adarshm0han" target="_blank" rel="noopener" class="contact-item">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Adarsh&nbsp;Mohan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
