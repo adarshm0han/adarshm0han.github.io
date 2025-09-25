@@ -36,12 +36,12 @@
     <section id="about" class="section about">
         <div class="container reveal">
             <h2>About Me</h2>
-            <p>I am a graduate student at Arizona&nbsp;State&nbsp;University pursuing a Master’s in Computer Science (class of&nbsp;2026). My passion lies at the intersection of data engineering and artificial intelligence. Over the years I’ve built scalable data pipelines, explored graph databases, and engineered machine learning models that solve real‑world problems. Previously, I worked as a Senior Associate at Genpact where I ensured robust ETL workflows and redesigned dashboards for SOX compliance. I also built ML‑powered physiotherapy assistance models during my internship at CasaMed.</p>
-            <p>My technical toolkit spans Python, C++, SQL, Docker, Kubernetes and a suite of ML libraries such as PyTorch, TensorFlow and scikit‑learn. When I’m not coding you’ll find me exploring the cosmos through astrophotography or tinkering with the latest machine learning research.</p>
+            <p>I am a graduate student at Arizona&nbsp;State&nbsp;University pursuing a Master’s in Computer Science (class of&nbsp;2026). My passion lies at the intersection of artificial intelligence and data engineering. Over the years I’ve built scalable data pipelines, explored graph databases, fine-tuned transformer models, and engineered machine learning models that solve real‑world problems. Previously, I worked as a Senior Associate at Genpact where I ensured robust ETL workflows and redesigned dashboards for SOX compliance. I also built ML‑powered physiotherapy assistance models during my internship at CasaMed.</p>
+            <p>My technical toolkit spans Python, C++, SQL, Docker, Kubernetes, Hugging Face Transformers, and a suite of ML libraries such as PyTorch, TensorFlow and scikit‑learn. When I’m not coding you’ll find me exploring the cosmos through astrophotography or tinkering with the latest machine learning research.</p>
             <div class="skills">
                 <div><strong>Languages:</strong> Python, C++, C, SQL, HTML, CSS</div>
-                <div><strong>Frameworks:</strong> Pandas, Numpy, TensorFlow, PyTorch, Scikit‑learn, SpaCy, Keras</div>
-                <div><strong>Tools:</strong> Docker, Kubernetes, Neo4j, Tableau, Talend, Git, Spark, Hadoop</div>
+                <div><strong>Frameworks:</strong> Pandas, Numpy, TensorFlow, PyTorch, Scikit‑learn, Hugging Face Transformers (DistilBERT, Trainer, Datasets), Hugging Face Hub & Inference API, VADER</div>
+                <div><strong>Tools:</strong> Docker, Kubernetes, Neo4j, Tableau, Talend, AWS Lambda, API Gateway, Git, Spark, Hadoop</div>
 		<div><strong>Certifications:</strong> Machine Learning [Stanford University (Coursera)], Data Science Foundation using R [Johns Hopkins University (Coursera)]</div>
             </div>
         </div>
@@ -51,6 +51,24 @@
     <section id="projects" class="section projects">
         <div class="container">
             <h2 class="reveal">Selected Projects</h2>
+			<!-- News Sentiment: VADER vs DistilBERT -->
+			<div class="project reveal">
+				<div class="project-text">
+					<h3><a href="https://adarshm0han.github.io/DistilBERT-vs-Vader/" target="_blank" rel="noopener">News Sentiment · DistilBERT vs VADER</a></h3>
+					<p>Lightweight, serverless news‑sentiment service that compares a rules‑based lexicon model (VADER) against a fine‑tuned transformer (DistilBERT). Co‑built the app while leading the ML side: training, fine‑tuned DistilBERT, served predictions via AWS&nbsp;Lambda calling the Hugging&nbsp;Face Inference API, and collaborated on VADER/AWS integration. Achieved <strong>0.81 macro‑F1</strong> on a held‑out test set.</p>
+					<ul>
+						<li><strong>Goal</strong>: Directly compare VADER vs a modern transformer on news headlines</li>
+						<li><strong>Architecture</strong>: Serverless AWS&nbsp;Lambda backend + Hugging&nbsp;Face Inference API. You can find the model <a href="https://huggingface.co/amohan78/distilbert_sentiment_model" target="_blank" rel="noopener">here</a>.</li>
+						<li><strong>Output</strong>: Unified JSON; DistilBERT scores mapped to a VADER‑style compound scale</li>
+						<li><strong>Data</strong>: 3‑class headline sentiment (NEGATIVE/NEUTRAL/POSITIVE); consistent inputs for both models</li>
+					</ul>
+					<p><a class="cta" href="https://adarshm0han.github.io/DistilBERT-vs-Vader/" target="_blank" rel="noopener">View Project</a></p>
+				</div>
+
+				<div class="project-image">
+					<img src="assets/News_Sentiment.png" alt="Screenshot of News Sentiment · VADER vs DistilBERT app">
+				</div>
+			</div>
             <!-- NYC Taxi Graph Analytics Pipeline -->
             <div class="project reveal">
                 <div class="project-text">
