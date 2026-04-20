@@ -1,38 +1,51 @@
-// Intersection Observer to reveal sections on scroll
-document.addEventListener('DOMContentLoaded', function () {
-  const revealElements = document.querySelectorAll('.reveal');
-  const nav = document.getElementById('navbar');
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll(".reveal");
+  const navbar = document.getElementById("navbar");
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  const navLinks = document.querySelectorAll(".menu a");
+  const sections = [...document.querySelectorAll("main section[id]")];
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.14 });
 
-  revealElements.forEach(el => {
-    observer.observe(el);
+  revealElements.forEach((element) => revealObserver.observe(element));
+
+  const updateNavState = () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 24);
+
+    const visibleSections = sections.filter((section) => section.getBoundingClientRect().top <= 120);
+    const current = visibleSections[visibleSections.length - 1];
+
+    if (!current) return;
+
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.getAttribute("href") === `#${current.id}`);
+    });
+  };
+
+  navToggle.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Change nav background when scrolling past hero
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 80) {
-      nav.style.background = 'rgba(10, 10, 35, 0.85)';
-    } else {
-      nav.style.background = 'rgba(10, 10, 35, 0.6)';
-    }
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
   });
 
-  // Set footer year
-  const yearSpan = document.getElementById('year');
+  window.addEventListener("scroll", updateNavState, { passive: true });
+  updateNavState();
+
+  const yearSpan = document.getElementById("year");
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
