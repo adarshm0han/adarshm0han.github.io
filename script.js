@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const aboutParagraphs = document.querySelectorAll("#about .section-copy > p");
   if (aboutParagraphs[0]) {
-    aboutParagraphs[0].textContent = "I am a Master of Science in Computer Science student at Arizona State University, graduating in December 2026. I build software and AI systems across full-stack applications, agentic workflows, graph-based retrieval, cloud infrastructure, and applied machine learning.";
+    aboutParagraphs[0].textContent = "I’m a software and AI engineer who enjoys building systems that solve real problems end to end. My experience spans full-stack development, AI-powered workflows, data engineering, and cloud systems, with recent work focused on healthcare automation and agentic AI.";
   }
   if (aboutParagraphs[1]) {
-    aboutParagraphs[1].textContent = "At Foresight Industries, I work on production healthcare claims software spanning TypeScript/React interfaces, Node.js REST APIs, PostgreSQL, AWS, denial analytics, and LLM-assisted appeal workflows. Previously, I worked on data engineering at Genpact and AI/ML products at CasaMed.";
+    aboutParagraphs[1].textContent = "I’m currently pursuing my M.S. in Computer Science at Arizona State University. Before graduate school, I worked as a Data Engineer at Genpact, and today I’m especially interested in building reliable AI products where software engineering, data, and machine learning come together.";
   }
 
   const statValues = document.querySelectorAll("#about .stat-row strong");
