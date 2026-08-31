@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Keep the portfolio content aligned with the current SDE / AI resume.
+  // Keep the portfolio content aligned with the current resume.
   document.title = "Adarsh Mohan | Software + AI Engineer";
   const metaDescription = document.querySelector('meta[name="description"]');
   if (metaDescription) {
@@ -93,30 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       projectList.appendChild(maRank);
     }
-  }
-
-  // Add the SDE / AI-specific resume while preserving the existing resume link.
-  const heroActions = document.querySelector(".hero-actions");
-  if (heroActions && !document.getElementById("sde-ai-resume-link")) {
-    const resumeLink = document.createElement("a");
-    resumeLink.id = "sde-ai-resume-link";
-    resumeLink.className = "button secondary";
-    resumeLink.href = "assets/Adarsh_Mohan_SDE_AI_Engineer_Resume.pdf";
-    resumeLink.target = "_blank";
-    resumeLink.rel = "noopener";
-    resumeLink.textContent = "SDE / AI Resume";
-    heroActions.appendChild(resumeLink);
-  }
-
-  const contactLinks = document.querySelector("#contact .contact-links");
-  if (contactLinks && !document.getElementById("contact-sde-ai-resume")) {
-    const contactResume = document.createElement("a");
-    contactResume.id = "contact-sde-ai-resume";
-    contactResume.href = "assets/Adarsh_Mohan_SDE_AI_Engineer_Resume.pdf";
-    contactResume.target = "_blank";
-    contactResume.rel = "noopener";
-    contactResume.textContent = "SDE / AI Resume";
-    contactLinks.appendChild(contactResume);
   }
 
   const contactCopy = document.querySelector("#contact .contact-inner > p:not(.eyebrow)");
