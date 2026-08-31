@@ -66,9 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
     maRank.id = "ma-rank-project";
     maRank.className = "project-card reveal";
     maRank.innerHTML = `
-      <div class="project-media split-media">
-        <img src="assets/ma-rank-console.png" alt="MA-Rank recruiter console with Candidate Search Agent controls" loading="lazy">
-        <img src="assets/ma-rank-results.png" alt="MA-Rank Consensus Agent recommendation and ranked candidate results" loading="lazy">
+      <div class="project-media ma-rank-carousel" style="position:relative;min-height:335px;background:#070807;">
+        <img data-ma-rank-slide src="assets/ma-rank-console.png" alt="MA-Rank recruiter console with Candidate Search Agent controls" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1;transition:opacity .65s ease;">
+        <img data-ma-rank-slide src="assets/ma-rank-results.png" alt="MA-Rank Consensus Agent recommendation and ranked candidate results" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .65s ease;">
+        <img data-ma-rank-slide src="assets/ma-rank-schema.png" alt="Neo4j MA-Rank graph schema connecting Candidate, Skill, Job, and Category nodes" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .65s ease;">
+        <img data-ma-rank-slide src="assets/ma-rank-neo4j-graph.png" alt="Populated MA-Rank Neo4j Aura graph with candidate, job, skill, and category nodes" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .65s ease;">
+        <div class="ma-rank-slide-count" style="position:absolute;right:10px;bottom:10px;z-index:5;padding:4px 8px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(0,0,0,.72);font-size:.72rem;color:#d7ddd2;">1 / 4</div>
       </div>
       <div class="project-content">
         <p class="item-meta">Multi-agent recruiting • Neo4j • LangGraph</p>
@@ -91,6 +94,44 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       projectList.appendChild(maRank);
     }
+
+    // Rotate through recruiter UI, consensus output, schema, and populated Neo4j graph.
+    const carousel = maRank.querySelector(".ma-rank-carousel");
+    const slides = [...maRank.querySelectorAll("[data-ma-rank-slide]")];
+    const counter = maRank.querySelector(".ma-rank-slide-count");
+    let activeSlide = 0;
+    let carouselPaused = false;
+
+    const availableSlides = () => slides.filter((slide) => slide.dataset.failed !== "true");
+    const showSlide = (slide) => {
+      const available = availableSlides();
+      if (!available.length) return;
+      available.forEach((item) => { item.style.opacity = item === slide ? "1" : "0"; });
+      activeSlide = available.indexOf(slide);
+      if (counter) counter.textContent = `${activeSlide + 1} / ${available.length}`;
+    };
+
+    slides.forEach((slide) => {
+      slide.addEventListener("error", () => {
+        slide.dataset.failed = "true";
+        slide.style.display = "none";
+        const available = availableSlides();
+        if (available.length) showSlide(available[Math.min(activeSlide, available.length - 1)]);
+      });
+    });
+
+    if (carousel) {
+      carousel.addEventListener("mouseenter", () => { carouselPaused = true; });
+      carousel.addEventListener("mouseleave", () => { carouselPaused = false; });
+    }
+
+    window.setInterval(() => {
+      if (carouselPaused) return;
+      const available = availableSlides();
+      if (available.length < 2) return;
+      activeSlide = (activeSlide + 1) % available.length;
+      showSlide(available[activeSlide]);
+    }, 3800);
   }
 
   const contactCopy = document.querySelector("#contact .contact-inner > p:not(.eyebrow)");
