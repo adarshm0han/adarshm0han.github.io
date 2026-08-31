@@ -66,11 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
     maRank.id = "ma-rank-project";
     maRank.className = "project-card reveal";
     maRank.innerHTML = `
-      <div class="project-media">
-        <img src="assets/ma-rank-home.png" alt="MA-Rank recruiter-facing multi-agent resume screening application" loading="lazy"
-          onload="this.nextElementSibling.style.display='none'"
-          onerror="this.style.display='none'">
-        <div style="display:flex;align-items:center;justify-content:center;min-height:220px;padding:2rem;text-align:center;opacity:.72;">MA-Rank app screenshot coming soon</div>
+      <div class="project-media split-media">
+        <img src="assets/ma-rank-console.png" alt="MA-Rank recruiter console with Candidate Search Agent controls" loading="lazy">
+        <img src="assets/ma-rank-results.png" alt="MA-Rank Consensus Agent recommendation and ranked candidate results" loading="lazy">
       </div>
       <div class="project-content">
         <p class="item-meta">Multi-agent recruiting • Neo4j • LangGraph</p>
